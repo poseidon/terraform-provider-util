@@ -1,0 +1,35 @@
+name: test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    name: go
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ['1.16', '1.17']
+    steps:
+      - name: setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{matrix.go}}
+
+      - name: setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: tools
+        run: GO111MODULE=off go get golang.org/x/lint/golint
+
+      - name: test
+        run: make
