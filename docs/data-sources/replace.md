@@ -8,8 +8,8 @@
 data "util_replace" "example" {
   content      = "hello world"
   replacements = {
-		"/(h|H)ello/": "Hallo",
-		"world": "Welt",
+    "/(h|H)ello/": "Hallo",
+    "world": "Welt",
   }
 }
 

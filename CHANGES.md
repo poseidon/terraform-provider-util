@@ -4,6 +4,6 @@ Notable changes between releases.
 
 ## Latest
 
-## V0.1.0
+## v0.1.0
 
 * Add `util_replace` function
