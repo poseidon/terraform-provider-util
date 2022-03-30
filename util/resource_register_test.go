@@ -10,11 +10,19 @@ const registerInitial = `
 resource "util_register" "example" {
 	set = "a1b2c3"
 }
+
+output "out" {
+	value = util_register.example.value
+}
 `
 
 const registerUnsetSHA = `
 resource "util_register" "example" {
 	set = ""
+}
+
+output "out" {
+	value = util_register.example.value
 }
 `
 
@@ -22,7 +30,17 @@ const registerUpdateSHA = `
 resource "util_register" "example" {
 	set = "b2c3d4"
 }
+
+output "out" {
+	value = util_register.example.value
+}
 `
+
+// register expected values
+const (
+	registerInitialExpected = "a1b2c3"
+	registerUpdateExpected  = "b2c3d4"
+)
 
 func TestRegister(t *testing.T) {
 	r.UnitTest(t, r.TestCase{
@@ -32,21 +50,24 @@ func TestRegister(t *testing.T) {
 			r.TestStep{
 				Config: registerInitial,
 				Check: r.ComposeTestCheckFunc(
-					r.TestCheckResourceAttr("util_register.example", "value", "a1b2c3"),
+					r.TestCheckResourceAttr("util_register.example", "value", registerInitialExpected),
+					r.TestCheckOutput("out", registerInitialExpected),
 				),
 			},
-			// set with empty value doesn't change value
+			// Empty content does NOT change value
 			r.TestStep{
 				Config: registerUnsetSHA,
 				Check: r.ComposeTestCheckFunc(
-					r.TestCheckResourceAttr("util_register.example", "value", "a1b2c3"),
+					r.TestCheckResourceAttr("util_register.example", "value", registerInitialExpected),
+					r.TestCheckOutput("out", registerInitialExpected),
 				),
 			},
-			// set with content updates values
+			// Non-empty content DOES change value
 			r.TestStep{
 				Config: registerUpdateSHA,
 				Check: r.ComposeTestCheckFunc(
-					r.TestCheckResourceAttr("util_register.example", "value", "b2c3d4"),
+					r.TestCheckResourceAttr("util_register.example", "value", registerUpdateExpected),
+					r.TestCheckOutput("out", registerUpdateExpected),
 				),
 			},
 			// suppress noisy diffs that won't affect value
@@ -54,7 +75,8 @@ func TestRegister(t *testing.T) {
 				Config:   registerUnsetSHA,
 				PlanOnly: true,
 				Check: r.ComposeTestCheckFunc(
-					r.TestCheckResourceAttr("util_register.example", "value", "b2c3d4"),
+					r.TestCheckResourceAttr("util_register.example", "value", registerUpdateExpected),
+					r.TestCheckOutput("out", registerUpdateExpected),
 				),
 			},
 		},
