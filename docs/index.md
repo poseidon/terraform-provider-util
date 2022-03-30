@@ -13,7 +13,7 @@ terraform {
   required_providers {
     ct = {
       source  = "poseidon/util"
-      version = "0.1.0"
+      version = "0.2.0"
     }
   }
 }

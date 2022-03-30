@@ -13,7 +13,7 @@ terraform {
   required_providers {
     ct = {
       source  = "poseidon/util"
-      version = "0.1.0"
+      version = "0.2.0"
     }
   }
 }
@@ -36,6 +36,26 @@ output "example" {
 }
 ```
 
+Store a value in state that persists until changed to a non-empty value.
+
+```tf
+resource "util_register" "example" {
+  set = "a1b2c3"
+}
+```
+
+Later, the register's value may be updated, but setting it to `null` or `""` is ignored.
+
+```tf
+resource "util_register" "example" {
+  set = null
+}
+
+output "sha" {
+  value = util_register.example.value  # "a1b2c3"
+}
+```
+
 Run `terraform init` to ensure plugin version requirements are met.
 
 ```
@@ -55,4 +75,3 @@ To develop the provider plugin locally, build an executable with Go v1.16+.
 ```
 make
 ```
-
