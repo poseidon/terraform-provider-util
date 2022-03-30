@@ -8,7 +8,7 @@ import (
 
 const registerInitial = `
 resource "util_register" "example" {
-	set = "a1b2c3"
+	content = "a1b2c3"
 }
 
 output "out" {
@@ -18,7 +18,7 @@ output "out" {
 
 const registerUnsetSHA = `
 resource "util_register" "example" {
-	set = ""
+	content = ""
 }
 
 output "out" {
@@ -28,7 +28,7 @@ output "out" {
 
 const registerUpdateSHA = `
 resource "util_register" "example" {
-	set = "b2c3d4"
+	content = "b2c3d4"
 }
 
 output "out" {

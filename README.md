@@ -36,19 +36,19 @@ output "example" {
 }
 ```
 
-Store a value in state that persists until changed to a non-empty value.
+Store a content value that persists in state until changed to a non-empty value.
 
 ```tf
 resource "util_register" "example" {
-  set = "a1b2c3"
+  content = "a1b2c3"
 }
 ```
 
-Later, the register's value may be updated, but setting it to `null` or `""` is ignored.
+Later, the register's content may be updated, but empty values (`null` or `""`) are ignored.
 
 ```tf
 resource "util_register" "example" {
-  set = null
+  content = null
 }
 
 output "sha" {

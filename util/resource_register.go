@@ -17,7 +17,7 @@ func resourceRegister() *schema.Resource {
 		UpdateContext: registerUpdate,
 		DeleteContext: registerDelete,
 		Schema: map[string]*schema.Schema{
-			"set": &schema.Schema{
+			"content": &schema.Schema{
 				Type: schema.TypeString,
 				// Allow content to be null
 				Optional: true,
@@ -36,9 +36,9 @@ func resourceRegister() *schema.Resource {
 				Description: "Computed register value",
 			},
 		},
-		// Changes to set (that are non-empty) mark value as computed
+		// Changes to content (that are non-empty) mark value as computed
 		CustomizeDiff: customdiff.ComputedIf("value", func(ctx context.Context, d *schema.ResourceDiff, meta interface{}) bool {
-			return d.HasChange("set") && d.Get("set").(string) != ""
+			return d.HasChange("content") && d.Get("content").(string) != ""
 		}),
 	}
 }
@@ -46,9 +46,9 @@ func resourceRegister() *schema.Resource {
 // registerCreate stores content as the register value.
 func resourceCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	var diags diag.Diagnostics
-	set := d.Get("set").(string)
-	d.Set("value", set)
-	d.SetId(strconv.Itoa(hashcode.String(set)))
+	content := d.Get("content").(string)
+	d.Set("value", content)
+	d.SetId(strconv.Itoa(hashcode.String(content)))
 	return diags
 }
 
@@ -62,9 +62,9 @@ func registerRead(ctx context.Context, d *schema.ResourceData, meta interface{})
 func registerUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	var diags diag.Diagnostics
 
-	set := d.Get("set").(string)
-	if set != "" {
-		d.Set("value", set)
+	content := d.Get("content").(string)
+	if content != "" {
+		d.Set("value", content)
 	}
 	return diags
 }

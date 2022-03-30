@@ -1,3 +1,3 @@
 resource "util_register" "example" {
-  set = "a1b2c3"
+  content = "a1b2c3"
 }
