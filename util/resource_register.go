@@ -2,9 +2,7 @@ package util
 
 import (
 	"context"
-	"strconv"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/hashcode"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -50,7 +48,7 @@ func resourceCreate(ctx context.Context, d *schema.ResourceData, meta interface{
 	var diags diag.Diagnostics
 	content := d.Get("content").(string)
 	d.Set("value", content)
-	d.SetId(strconv.Itoa(hashcode.String(content)))
+	d.SetId(Hashcode(content))
 	return diags
 }
 

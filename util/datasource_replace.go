@@ -3,10 +3,8 @@ package util
 import (
 	"context"
 	"regexp"
-	"strconv"
 	"strings"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/hashcode"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -46,7 +44,7 @@ func datasourceReplaceRead(ctx context.Context, d *schema.ResourceData, meta int
 	}
 
 	d.Set("replaced", replaced)
-	d.SetId(strconv.Itoa(hashcode.String(replaced)))
+	d.SetId(Hashcode(replaced))
 	return diags
 }
 
