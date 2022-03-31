@@ -19,16 +19,16 @@ func datasourceReplace() *schema.Resource {
 		ReadContext: datasourceReplaceRead,
 
 		Schema: map[string]*schema.Schema{
-			"content": &schema.Schema{
+			"content": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"replacements": &schema.Schema{
+			"replacements": {
 				Type:     schema.TypeMap,
 				Elem:     schema.TypeString,
 				Required: true,
 			},
-			"replaced": &schema.Schema{
+			"replaced": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Description: "content with replacements performed",

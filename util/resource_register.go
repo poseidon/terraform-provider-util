@@ -6,7 +6,6 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/hashcode"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/customdiff"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
@@ -17,7 +16,7 @@ func resourceRegister() *schema.Resource {
 		UpdateContext: registerUpdate,
 		DeleteContext: registerDelete,
 		Schema: map[string]*schema.Schema{
-			"content": &schema.Schema{
+			"content": {
 				Type: schema.TypeString,
 				// Allow content to be null
 				Optional: true,
@@ -30,16 +29,19 @@ func resourceRegister() *schema.Resource {
 				DiffSuppressOnRefresh: true,
 				DiffSuppressFunc:      registerDiffSuppress,
 			},
-			"value": &schema.Schema{
+			"value": {
 				Type:        schema.TypeString,
 				Computed:    true,
 				Description: "Computed register value",
 			},
 		},
 		// Changes to content (that are non-empty) mark value as computed
-		CustomizeDiff: customdiff.ComputedIf("value", func(ctx context.Context, d *schema.ResourceDiff, meta interface{}) bool {
-			return d.HasChange("content") && d.Get("content").(string) != ""
-		}),
+		CustomizeDiff: func(ctx context.Context, d *schema.ResourceDiff, meta interface{}) error {
+			if content := d.Get("content").(string); d.HasChange("content") && content != "" {
+				d.SetNew("value", content)
+			}
+			return nil
+		},
 	}
 }
 

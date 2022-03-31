@@ -47,7 +47,7 @@ func TestRegister(t *testing.T) {
 		Providers: testProviders,
 		Steps: []r.TestStep{
 			// set initial value
-			r.TestStep{
+			{
 				Config: registerInitial,
 				Check: r.ComposeTestCheckFunc(
 					r.TestCheckResourceAttr("util_register.example", "value", registerInitialExpected),
@@ -55,7 +55,7 @@ func TestRegister(t *testing.T) {
 				),
 			},
 			// Empty content does NOT change value
-			r.TestStep{
+			{
 				Config: registerUnsetSHA,
 				Check: r.ComposeTestCheckFunc(
 					r.TestCheckResourceAttr("util_register.example", "value", registerInitialExpected),
@@ -63,7 +63,7 @@ func TestRegister(t *testing.T) {
 				),
 			},
 			// Non-empty content DOES change value
-			r.TestStep{
+			{
 				Config: registerUpdateSHA,
 				Check: r.ComposeTestCheckFunc(
 					r.TestCheckResourceAttr("util_register.example", "value", registerUpdateExpected),
@@ -71,7 +71,7 @@ func TestRegister(t *testing.T) {
 				),
 			},
 			// suppress noisy diffs that won't affect value
-			r.TestStep{
+			{
 				Config:   registerUnsetSHA,
 				PlanOnly: true,
 				Check: r.ComposeTestCheckFunc(

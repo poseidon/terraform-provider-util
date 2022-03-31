@@ -33,13 +33,13 @@ func TestReplace(t *testing.T) {
 	r.UnitTest(t, r.TestCase{
 		Providers: testProviders,
 		Steps: []r.TestStep{
-			r.TestStep{
+			{
 				Config: replaceExample1,
 				Check: r.ComposeTestCheckFunc(
 					r.TestCheckResourceAttr("data.util_replace.example", "replaced", replaceExpected1),
 				),
 			},
-			r.TestStep{
+			{
 				Config: replaceExample2,
 				Check: r.ComposeTestCheckFunc(
 					r.TestCheckResourceAttr("data.util_replace.example", "replaced", replaceExpected2),
