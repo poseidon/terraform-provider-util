@@ -6,7 +6,7 @@ Notable changes between releases.
 
 ## v0.2.2
 
-* Improve `util_register` plan diff to show expected value
+* Improve `util_register` plan diff to show expected value ([#10](https://github.com/poseidon/terraform-provider-util/pull/10))
 
 ## v0.2.1
 

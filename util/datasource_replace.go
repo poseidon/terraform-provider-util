@@ -43,7 +43,9 @@ func datasourceReplaceRead(ctx context.Context, d *schema.ResourceData, meta int
 		return diag.FromErr(err)
 	}
 
-	d.Set("replaced", replaced)
+	if err := d.Set("replaced", replaced); err != nil {
+		return diag.FromErr(err)
+	}
 	d.SetId(Hashcode(replaced))
 	return diags
 }

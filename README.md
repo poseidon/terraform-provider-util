@@ -70,7 +70,7 @@ $ terraform init
 
 ### Binary
 
-To develop the provider plugin locally, build an executable with Go v1.16+.
+To develop the provider plugin locally, build an executable with Go v1.17+.
 
 ```
 make

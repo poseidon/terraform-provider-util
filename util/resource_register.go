@@ -36,7 +36,9 @@ func resourceRegister() *schema.Resource {
 		// Changes to content (that are non-empty) mark value as computed
 		CustomizeDiff: func(ctx context.Context, d *schema.ResourceDiff, meta interface{}) error {
 			if content := d.Get("content").(string); d.HasChange("content") && content != "" {
-				d.SetNew("value", content)
+				if err := d.SetNew("value", content); err != nil {
+					return err
+				}
 			}
 			return nil
 		},
@@ -47,7 +49,9 @@ func resourceRegister() *schema.Resource {
 func resourceCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	var diags diag.Diagnostics
 	content := d.Get("content").(string)
-	d.Set("value", content)
+	if err := d.Set("value", content); err != nil {
+		return diag.FromErr(err)
+	}
 	d.SetId(Hashcode(content))
 	return diags
 }
@@ -64,7 +68,9 @@ func registerUpdate(ctx context.Context, d *schema.ResourceData, meta interface{
 
 	content := d.Get("content").(string)
 	if content != "" {
-		d.Set("value", content)
+		if err := d.Set("value", content); err != nil {
+			return diag.FromErr(err)
+		}
 	}
 	return diags
 }

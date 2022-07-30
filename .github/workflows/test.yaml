@@ -1,11 +1,6 @@
 name: test
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 jobs:
   build:
     name: go
@@ -27,9 +22,6 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v3
-
-      - name: tools
-        run: go install golang.org/x/lint/golint@latest
 
       - name: test
         run: make
