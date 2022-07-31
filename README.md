@@ -1,4 +1,4 @@
-# terraform-provider-util [![Build Status](https://github.com/poseidon/terraform-provider-util/workflows/test/badge.svg)](https://github.com/poseidon/terraform-provider-util/actions?query=workflow%3Atest+branch%3Amain)
+# terraform-provider-util [![GoDoc](https://pkg.go.dev/badge/github.com/poseidon/terraform-provider-util.svg)](https://pkg.go.dev/github.com/poseidon/terraform-provider-util) [![Workflow](https://github.com/poseidon/terraform-provider-util/actions/workflows/test.yaml/badge.svg)](https://github.com/poseidon/terraform-provider-util/actions/workflows/test.yaml?query=branch%3Amain) [![Sponsors](https://img.shields.io/github/sponsors/poseidon?logo=github)](https://github.com/sponsors/poseidon) [![Twitter](https://img.shields.io/badge/follow-news-1da1f2?logo=twitter)](https://twitter.com/poseidonlabs)
 
 `terraform-provider-util` provides some low-level utility functions.
 
