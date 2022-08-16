@@ -1,4 +1,5 @@
-# terraform-provider-util [![GoDoc](https://pkg.go.dev/badge/github.com/poseidon/terraform-provider-util.svg)](https://pkg.go.dev/github.com/poseidon/terraform-provider-util) [![Workflow](https://github.com/poseidon/terraform-provider-util/actions/workflows/test.yaml/badge.svg)](https://github.com/poseidon/terraform-provider-util/actions/workflows/test.yaml?query=branch%3Amain) ![Downloads](https://img.shields.io/github/downloads/poseidon/terraform-provider-util/total) [![Sponsors](https://img.shields.io/github/sponsors/poseidon?logo=github)](https://github.com/sponsors/poseidon) [![Twitter](https://img.shields.io/badge/follow-news-1da1f2?logo=twitter)](https://twitter.com/poseidonlabs)
+# terraform-provider-util
+[![GoDoc](https://pkg.go.dev/badge/github.com/poseidon/terraform-provider-util.svg)](https://pkg.go.dev/github.com/poseidon/terraform-provider-util) [![Workflow](https://github.com/poseidon/terraform-provider-util/actions/workflows/test.yaml/badge.svg)](https://github.com/poseidon/terraform-provider-util/actions/workflows/test.yaml?query=branch%3Amain) ![Downloads](https://img.shields.io/github/downloads/poseidon/terraform-provider-util/total) [![Sponsors](https://img.shields.io/github/sponsors/poseidon?logo=github)](https://github.com/sponsors/poseidon) [![Twitter](https://img.shields.io/badge/follow-news-1da1f2?logo=twitter)](https://twitter.com/poseidonlabs)
 
 `terraform-provider-util` provides some low-level utility functions.
 
@@ -70,7 +71,7 @@ $ terraform init
 
 ### Binary
 
-To develop the provider plugin locally, build an executable with Go v1.17+.
+To develop the provider plugin locally, build an executable with Go v1.18+.
 
 ```
 make
