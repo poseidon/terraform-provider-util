@@ -3,7 +3,7 @@ terraform {
     util = {
       source = "poseidon/util"
       #source = "terraform.localhost/poseidon/util"
-      version = "0.2.0"
+      version = "0.2.2"
     }
   }
 }
