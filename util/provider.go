@@ -12,6 +12,7 @@ func Provider() *schema.Provider {
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"util_replace": datasourceReplace(),
+			"util_nix":     datasourceNix(),
 		},
 	}
 }
