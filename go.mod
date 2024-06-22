@@ -6,7 +6,7 @@ toolchain go1.21.5
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.34.0
-	github.com/stretchr/testify v1.7.2
+	github.com/stretchr/testify v1.9.0
 )
 
 require (
