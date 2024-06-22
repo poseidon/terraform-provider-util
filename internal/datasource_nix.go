@@ -1,4 +1,4 @@
-package util
+package internal
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/poseidon/terraform-provider-util/internal"
+	"github.com/poseidon/terraform-provider-util/internal/nixane"
 )
 
 func datasourceNix() *schema.Resource {
@@ -61,10 +61,10 @@ func renderContent(d *schema.ResourceData) (string, error) {
 	}
 	path = filepath.Clean(path)
 
-	fsys := internal.NewOverlayFS(overlays)
-	modules, err := internal.CollectModules(fsys, path)
+	fsys := nixane.NewOverlayFS(overlays)
+	modules, err := nixane.CollectModules(fsys, path)
 	if err != nil {
 		return "", err
 	}
-	return internal.EncodeToAwkball(name, modules), nil
+	return nixane.EncodeToAwkball(name, modules), nil
 }

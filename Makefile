@@ -45,8 +45,8 @@ _output/plugin-%.zip: _output/%/terraform-provider-util
 	@mkdir -p $(DEST)
 	@cp _output/$*/terraform-provider-util $(DEST)/terraform-provider-util_$(VERSION)
 	@zip -j $(DEST).zip $(DEST)/terraform-provider-util_$(VERSION)
-	mkdir -p $(LOCAL)/$(subst -,_,$*)
-	cp _output/$*/terraform-provider-util $(LOCAL)/$(subst -,_,$*)/terraform-provider-util_$(VERSION)
+	@mkdir -p $(LOCAL)/$(subst -,_,$*)
+	@cp _output/$*/terraform-provider-util $(LOCAL)/$(subst -,_,$*)/terraform-provider-util_$(VERSION)
 
 _output/linux-amd64/terraform-provider-util: GOARGS = GOOS=linux GOARCH=amd64
 _output/linux-arm64/terraform-provider-util: GOARGS = GOOS=linux GOARCH=arm64
