@@ -4,6 +4,11 @@ Notable changes between releases.
 
 ## Latest
 
+## v0.3.0
+
+* Add `util_nix` to parse and serialize NixOS modules as awkballs
+  * Note, this is highly unusual utility I required. It's quite experimental
+
 ## v0.2.2
 
 * Improve `util_register` plan diff to show expected value ([#10](https://github.com/poseidon/terraform-provider-util/pull/10))
