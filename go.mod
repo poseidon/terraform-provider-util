@@ -2,7 +2,7 @@ module github.com/poseidon/terraform-provider-util
 
 go 1.22.0
 
-toolchain go1.23.2
+toolchain go1.24.0
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.0
