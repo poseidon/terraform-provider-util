@@ -11,6 +11,7 @@ func Provider() *schema.Provider {
 			"util_register": resourceRegister(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
+			"util_jwks":    datasourceJWKS(),
 			"util_replace": datasourceReplace(),
 			"util_nix":     datasourceNix(),
 		},

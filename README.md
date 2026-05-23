@@ -16,9 +16,9 @@ provider "util" {}
 
 terraform {
   required_providers {
-    ct = {
+    util = {
       source  = "poseidon/util"
-      version = "0.3.0"
+      version = "0.4.0"
     }
   }
 }
@@ -38,6 +38,18 @@ data "util_replace" "example" {
 # Hallo Welt
 output "example" {
   value = data.ct_replace.example.replaced
+}
+```
+
+Convert a Kubernetes Service Account public key into a JWKS document for OIDC discovery.
+
+```hcl
+data "util_jwks" "cluster" {
+  public_key = module.cluster.service_account_public_key
+}
+
+output "jwks" {
+  value = data.util_jwks.cluster.jwks
 }
 ```
 
