@@ -4,6 +4,10 @@ Notable changes between releases.
 
 ## Latest
 
+## v0.4.0
+
+* Add `util_jwks` to convert RSA or ECDSA public keys into Kubernetes-compatible JWKS documents ([#95](https://github.com/poseidon/terraform-provider-util/pull/95))
+
 ## v0.3.0
 
 * Add `util_nix` to parse and serialize NixOS modules as awkballs
