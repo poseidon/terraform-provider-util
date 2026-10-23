@@ -81,7 +81,7 @@ func registerDelete(ctx context.Context, d *schema.ResourceData, meta interface{
 	return nil
 }
 
-// registerDiffSuppress supresses plan diffs setting content to an empty
+// registerDiffSuppress suppresses plan diffs setting content to an empty
 // string or null (converts to empty string in ResourceData). Empty content
 // does not alter the register value.
 func registerDiffSuppress(k, oldV, newV string, d *schema.ResourceData) bool {
