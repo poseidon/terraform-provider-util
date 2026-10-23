@@ -11,7 +11,7 @@ import (
 // Hashcode hashes a string to a unique hashcode.
 //
 // crc32 returns a uint32, but for our use we need
-// and non negative integer. Here we cast to an integer
+// a non-negative integer. Here we cast to an integer
 // and invert it if the result is negative.
 func Hashcode(s string) string {
 	v := int(crc32.ChecksumIEEE([]byte(s)))
